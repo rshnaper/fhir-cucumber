@@ -30,6 +30,12 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+           <groupId>ca.uhn.hapi.fhir</groupId>
+           <artifactId>hapi-fhir-client</artifactId>
+           <version>3.4.0</version>
+        </dependency>
     </dependencies>
 
     <build>
