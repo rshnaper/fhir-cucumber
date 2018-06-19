@@ -8,21 +8,35 @@
     <artifactId>fhir-cucumber</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    
+    <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<cucumber.version>3.0.2</cucumber.version>
+		<gherkin.version>5.1.0</gherkin.version>
+	</properties>
 
     <dependencies>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java8</artifactId>
-            <version>3.0.2</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>3.0.2</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>${gherkin.version}</version>
+		</dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -46,7 +60,6 @@
            <artifactId>hapi-fhir-structures-dstu3</artifactId>
            <version>3.4.0</version>
         </dependency>
-        
         
     </dependencies>
 
@@ -74,7 +87,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 </project>
