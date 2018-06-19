@@ -24,13 +24,18 @@ import static org.hamcrest.MatcherAssert.*;
 public class HapiFhirClientStepDefs implements En {
     
     private final static FhirContext mContext = FhirContext.forDstu3();
-    private final IGenericClient mClient;
+    private IGenericClient mClient;
     private MethodOutcome mOutcome;
     private IHttpResponse mResponse;
     private IHttpRequest mRequest;
     
  
     public HapiFhirClientStepDefs() {
+        initHapiClient();
+        initCucumberDefinitions();
+    }
+    
+    private void initHapiClient() {
          mClient = mContext.newRestfulGenericClient("http://hapi.fhir.org/baseDstu3");
          mClient.registerInterceptor(new IClientInterceptor() {
             
@@ -46,21 +51,28 @@ public class HapiFhirClientStepDefs implements En {
         });
     }
     
-    @When("new patient is created")
-    public void newPatient() {
+    private void initCucumberDefinitions() {
+        When("new patient is created", ()->newPatient());
+        
+        Then("no errors returned", ()->noErrors());
+        
+        And("status code is {int}", (code)->statusCode((int)code));
+    }
+    
+
+    private void newPatient() {
         Patient patient = new Patient();
         mOutcome = mClient.create().resource(patient).execute();
     }
     
-    @Then("no errors returned")
-    public void noErrors() {
+
+    private void noErrors() {
         assertThat(mOutcome, not(nullValue()));
         //TODO: implement check to see whether outcome contains any severe issues
     }
     
     
-    @And("status code is {int}")
-    public void statusCode(int code) {
+    private void statusCode(int code) {
         assertThat(mResponse, not(nullValue()));
         assertThat(mResponse.getStatus(), equalTo(code));
     }
