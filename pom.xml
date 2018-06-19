@@ -12,15 +12,15 @@
     <dependencies>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>2.3.1</version>
+            <artifactId>cucumber-java8</artifactId>
+            <version>3.0.2</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>2.3.1</version>
+            <version>3.0.2</version>
             <scope>test</scope>
         </dependency>
 
@@ -36,9 +36,29 @@
            <artifactId>hapi-fhir-client</artifactId>
            <version>3.4.0</version>
         </dependency>
+        <dependency>
+           <groupId>ca.uhn.hapi.fhir</groupId>
+           <artifactId>hapi-fhir-utilities</artifactId>
+           <version>3.4.0</version>
+        </dependency>
+        <dependency>
+           <groupId>ca.uhn.hapi.fhir</groupId>
+           <artifactId>hapi-fhir-structures-dstu3</artifactId>
+           <version>3.4.0</version>
+        </dependency>
+        
+        
     </dependencies>
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <includes>
+                    <include>**/*.feature</include>
+                </includes>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
