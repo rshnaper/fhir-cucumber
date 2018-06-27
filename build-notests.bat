@@ -1,1 +1,0 @@
-C:\Users\ACosico\dev\apache-maven-3.5.3\bin\mvn --settings C:\Users\ACosico\dev\repository\settings.xml -X clean package -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true
