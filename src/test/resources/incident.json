@@ -1,0 +1,58 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Incident",
+    "description": "An incident from NSIR FHIR",
+	"type": "object",
+	"properties": {
+		"resourceType": {
+			"enum": ["Bundle"]
+		},
+		"id": {
+			"type": "string",
+			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+		},
+		"meta": {
+			"type": "object",
+			"properties": {
+				"lastUpdated": {
+					"type": "string",
+					"pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?$"
+				}
+			}
+		},
+		"type": {
+			"enum": ["document"]
+		},
+		"link": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"relation": {
+						"enum": ["self"]
+					},
+					"url": {
+						"type": "string",
+						"pattern": "^http://cihi.ca/fhir/nsir/Bundle.*$"
+					}
+				}
+			}
+		},
+		"entry": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"resource": {
+						"type": "object",
+						"properties": {
+							"resourceType": {
+								"enum": ["Device", "AdverseEvent", "Patient", "Composition"]
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

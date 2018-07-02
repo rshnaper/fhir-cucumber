@@ -45,7 +45,7 @@ import com.google.gson.JsonParser;
 public class TestSupport {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(TestSupport.class);
-
+	
 	private static ClientHttpRequestFactory getClientHttpRequestFactory() {
 		int timeout = 5000;
 		RequestConfig config = RequestConfig.custom()
@@ -123,7 +123,6 @@ public class TestSupport {
 	
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> convertJsonToMap(String json) {
-//		Map<String, Object> map = new Gson().fromJson(json, Map.class);
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> map = new HashMap<>();
 		try {
@@ -150,5 +149,5 @@ public class TestSupport {
 
 		return prettyJson;
 	}
-	
+
 }
