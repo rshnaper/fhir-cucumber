@@ -50,13 +50,6 @@ public class IncidentStepDefs {
 				RestAssured.baseURI = Constants.NSIR_WS_BASE_URI;
 				RestAssured.basePath = Constants.NSIR_WS_BASE_PATH;
 				
-//				JsonSchemaValidator.settings = settings().with()
-//						.jsonSchemaFactory(JsonSchemaFactory.newBuilder()
-//								.setValidationConfiguration(
-//										ValidationConfiguration.newBuilder().setDefaultVersion(SchemaVersion.DRAFTV4).freeze())
-//								.freeze())
-//						.and().with().checkedValidation(true);
-				
 				accessToken = TestSupport.getAccessToken();
 				isInitialized = true;
 			}
@@ -115,7 +108,7 @@ public class IncidentStepDefs {
 			.assertThat()
 			.body("resourceType", equalTo("Bundle"))
 			.and()
-			.body("entry[2].resource.identifier.value", equalTo(identifier));
+			.body("entry[0].resource.identifier.value", equalTo(identifier));
 	}
 	
 }

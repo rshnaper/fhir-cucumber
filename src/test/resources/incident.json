@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "http://json-schema.org/draft-04/schema#",
 	"title": "Incident",
     "description": "An incident from NSIR FHIR",
 	"type": "object",
@@ -21,7 +21,7 @@
 			}
 		},
 		"type": {
-			"enum": ["document"]
+			"enum": ["collection"]
 		},
 		"link": {
 			"type": "array",
@@ -48,6 +48,10 @@
 						"properties": {
 							"resourceType": {
 								"enum": ["Device", "AdverseEvent", "Patient", "Composition"]
+							},
+							"id": {
+								"type": "string",
+								"pattern": "^[0-9]*$"
 							}
 						}
 					}
